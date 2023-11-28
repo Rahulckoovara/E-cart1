@@ -2,6 +2,8 @@ import 'package:e_cart1/model/Product.dart';
 import 'package:e_cart1/model/my_product.dart';
 import 'package:e_cart1/pages/details.dart';
 import 'package:flutter/material.dart';
+import 'package:carousel_slider/carousel_slider.dart';
+
 import 'package:e_cart1/widgets/product_card.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -16,20 +18,33 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(20.0),
+      padding: const EdgeInsets.symmetric(vertical: 1.0),
       child: Column(
         children: [
-          const Text(
-            'Products',
-            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              _buildProductCategory(index: 0, name: 'All Products'),
-              _buildProductCategory(index: 1, name: 'Jackets'),
-              _buildProductCategory(index: 2, name: 'Shoes'),
-            ],
+          CarouselSlider(
+              items: [
+                Image.asset('assets/ad/ad1.png'),
+                Image.asset('assets/ad/ad2.png'),
+              ],
+              options: CarouselOptions(
+                autoPlay: true,
+                height: 200,
+                viewportFraction: 1,
+              )),
+          // const Text(
+          //   'Products',
+          //   style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+          // ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                _buildProductCategory(index: 0, name: 'All Products'),
+                _buildProductCategory(index: 1, name: 'Jackets'),
+                _buildProductCategory(index: 2, name: 'Shoes'),
+              ],
+            ),
           ),
           SizedBox(
             height: 10,
@@ -94,7 +109,12 @@ class _HomeScreenState extends State<HomeScreen> {
       itemCount: MyProducts.Jackets.length,
       itemBuilder: (context, index) {
         final Jackets = MyProducts.Jackets[index];
-        return ProductCart(product: Jackets);
+        return GestureDetector(
+            onTap: () => Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => Details(product: Jackets))),
+            child: ProductCart(product: Jackets));
       });
 
   _buildShoes() => GridView.builder(
@@ -107,6 +127,13 @@ class _HomeScreenState extends State<HomeScreen> {
       itemCount: MyProducts.shoes.length,
       itemBuilder: (context, index) {
         final shoes = MyProducts.shoes[index];
-        return ProductCart(product: shoes);
+        return GestureDetector(
+            onTap: () => {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => Details(product: shoes))),
+                },
+            child: ProductCart(product: shoes));
       });
 }

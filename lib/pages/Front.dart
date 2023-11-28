@@ -1,5 +1,6 @@
 import 'package:e_cart1/pages/HomeScreen.dart';
 import 'package:e_cart1/pages/ProfileScreen.dart';
+import 'package:e_cart1/pages/cart.dart';
 import 'package:e_cart1/pages/favorite.dart';
 import 'package:flutter/material.dart';
 
@@ -23,7 +24,22 @@ class _Front extends State<Front> {
       body: Screens[currentIndex],
       appBar: AppBar(
         backgroundColor: Colors.blue,
-        title: Text('E-Kart'),
+        title: Text(
+          'E-Kart',
+          style: TextStyle(color: Colors.white, fontSize: 30),
+        ),
+        centerTitle: true,
+        actions: [
+          IconButton(
+              icon: Icon(
+                Icons.shopping_cart,
+                color: Colors.white,
+              ),
+              onPressed: () {
+                Navigator.push(
+                    context, MaterialPageRoute(builder: (context) => Cart()));
+              }),
+        ],
       ),
       bottomNavigationBar: BottomNavigationBar(
           currentIndex: currentIndex,
