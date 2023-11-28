@@ -31,7 +31,7 @@ class _ProductCartState extends State<ProductCart> {
             ],
           ),
           SizedBox(
-              height: 140,
+              height: 120,
               width: 140,
               child: Image.asset(
                 widget.product.image,

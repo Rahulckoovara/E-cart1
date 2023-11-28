@@ -1,5 +1,6 @@
 import 'package:e_cart1/model/Product.dart';
 import 'package:e_cart1/model/my_product.dart';
+import 'package:e_cart1/pages/details.dart';
 import 'package:flutter/material.dart';
 import 'package:e_cart1/widgets/product_card.dart';
 
@@ -75,7 +76,12 @@ class _HomeScreenState extends State<HomeScreen> {
       itemCount: MyProducts.allProducts.length,
       itemBuilder: (context, index) {
         final allProducts = MyProducts.allProducts[index];
-        return ProductCart(product: allProducts);
+        return GestureDetector(
+            onTap: () => Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => Details(product: allProducts))),
+            child: ProductCart(product: allProducts));
       });
 
   _builsJackets() => GridView.builder(
