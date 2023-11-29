@@ -20,25 +20,25 @@ class start extends StatelessWidget {
             Column(
               children: [
                 Text(
-                  "Welcome",
+                  "Welcome!",
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 30,
                   ),
                 ),
-                SizedBox(height: 10),
-                // Text(
-                //   "Hi Welcome",
-                //   textAlign: TextAlign.center,
-                //   style: TextStyle(
-                //     color: Colors.grey[700],
-                //     fontSize: 15,
-                //   ),
-                // )
+//SizedBox(height: 5),
+                Text(
+                  "Your Shopping Partner",
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    color: Colors.grey[700],
+                    fontSize: 15,
+                  ),
+                )
               ],
             ),
             Container(
-              height: MediaQuery.of(context).size.height / 3,
+              height: MediaQuery.of(context).size.height / 2,
               decoration: BoxDecoration(
                   image: DecorationImage(
                 image: AssetImage("assets/ad/welcome.png"),

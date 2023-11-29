@@ -1,8 +1,10 @@
+import 'package:e_cart1/model/Product.dart';
 import 'package:e_cart1/pages/HomeScreen.dart';
 import 'package:e_cart1/pages/ProfileScreen.dart';
 import 'package:e_cart1/pages/cart.dart';
 import 'package:e_cart1/pages/favorite.dart';
 import 'package:flutter/material.dart';
+import 'package:e_cart1/model/my_product.dart';
 
 class Front extends StatefulWidget {
   const Front({super.key});
@@ -18,6 +20,8 @@ class _Front extends State<Front> {
     const FavoriteScreen(),
     const ProfileScreen(),
   ];
+
+  //final allProducts = MyProducts.allProducts[index];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
