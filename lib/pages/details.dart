@@ -129,7 +129,11 @@ class Details extends StatelessWidget {
               ),
               ElevatedButton.icon(
                   onPressed: () {
-                    provider.toggleProduct(product);
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) {
+                      return Cart();
+                    }));
+                    //   provider.toggleProduct(product);
                   },
                   icon: Icon(Icons.send),
                   label: Text('Add To Cart'))
