@@ -1,10 +1,8 @@
-import 'package:e_cart1/model/Product.dart';
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:e_cart1/model/my_product.dart';
 import 'package:e_cart1/pages/details.dart';
-import 'package:flutter/material.dart';
-import 'package:carousel_slider/carousel_slider.dart';
-
 import 'package:e_cart1/widgets/product_card.dart';
+import 'package:flutter/material.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});

@@ -27,6 +27,7 @@ class _Front extends State<Front> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Screens[currentIndex],
+
       // currentIndex == 0 ? _buildSearchResults() :
 
       appBar: AppBar(

@@ -1,6 +1,8 @@
 import 'package:e_cart1/pages/signin.dart';
 import 'package:flutter/material.dart';
 
+
+
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
 
@@ -20,11 +22,17 @@ class ProfileScreen extends StatelessWidget {
               ),
             ),
           ),
+
+
+
           Center(
               child: Text(
             'Peter  Parker',
             style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-          )),
+          )
+          )
+
+          ,
           Center(
               child: Text(
             'Spider@gmail.com',
@@ -32,7 +40,7 @@ class ProfileScreen extends StatelessWidget {
               fontSize: 20,
             ),
           )),
-          SizedBox(
+          const SizedBox(
             height: 20,
           ),
           ListTile(
@@ -47,12 +55,13 @@ class ProfileScreen extends StatelessWidget {
             title: Text('E-Kart Plus'),
             leading: Icon(Icons.offline_bolt_sharp),
           ),
-          SizedBox(
-            height: 50,
+         SizedBox(
+            height: MediaQuery.of(context).size.height/8,
           ),
           Padding(
             padding: const EdgeInsets.all(12.0),
             child: Container(
+              height: MediaQuery.of(context).size.height/14,
               child: TextButton.icon(
                   onPressed: () {
                     Navigator.push(context,
@@ -61,7 +70,7 @@ class ProfileScreen extends StatelessWidget {
                   icon: Icon(Icons.logout),
                   label: Text('Logout')),
               width: double.infinity,
-              height: 50,
+           //   height: 50,
               color: Colors.grey[300],
             ),
           )

@@ -1,8 +1,5 @@
 import 'dart:async';
 
-import 'package:e_cart1/pages/SignIn.dart';
-import 'package:e_cart1/pages/Front.dart';
-import 'package:e_cart1/pages/HomeScreen.dart';
 import 'package:e_cart1/pages/start.dart';
 import 'package:flutter/material.dart';
 
@@ -27,7 +24,7 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.blue, // Set your desired background color
+      backgroundColor: Colors.blue[200], // Set your desired background color
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -39,7 +36,9 @@ class _SplashScreenState extends State<SplashScreen> {
               height: 100,
             ),
             SizedBox(height: 10),
-            CircularProgressIndicator(),
+            CircularProgressIndicator(strokeCap: StrokeCap.round,
+            color: Colors.white,
+            ),
             // Text(
             //   'E-Kart',
             //   style: TextStyle(
