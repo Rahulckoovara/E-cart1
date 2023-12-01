@@ -22,12 +22,12 @@ class ProfileScreen extends StatelessWidget {
           ),
           Center(
               child: Text(
-            'Sachin Bansal',
+            'Peter  Parker',
             style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
           )),
           Center(
               child: Text(
-            'Sachin Bansal@gmail.com',
+            'Spider@gmail.com',
             style: TextStyle(
               fontSize: 20,
             ),

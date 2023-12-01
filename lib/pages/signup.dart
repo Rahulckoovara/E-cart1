@@ -16,7 +16,11 @@ class _SignUpState extends State<SignUp> {
  TextEditingController emailController= TextEditingController();
   TextEditingController password = TextEditingController();
   TextEditingController confirmpassword = TextEditingController();
-
+bool isValidEmail(String email) {
+    final RegExp emailRegex = RegExp(r'^[\w-]+(\.[\w-]+)*@[\w-]+(\.[\w-]+)+$');
+    return emailRegex.hasMatch(email);
+  }
+   bool passwordMatch = true;
 
   @override
   Widget build(BuildContext context) {
@@ -72,7 +76,9 @@ class _SignUpState extends State<SignUp> {
                       child: Column(
                         children: [
                           TextFormField(
-                             validator: (value){
+
+
+                       validator: (value){
                         if(value!.isEmpty)
                         {
                           return 'Please Enter Name';
@@ -80,74 +86,103 @@ class _SignUpState extends State<SignUp> {
                         return null;
                       },
                       onSaved: ( value){
+
+
                         name = value!;
-                      },
-                            decoration: InputDecoration(
-                                labelText: 'Username',
-                                enabledBorder: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(20),
-                                  borderSide: BorderSide(color: Colors.black),
-                                ),
-                                focusedBorder: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(20),
-                                  borderSide: BorderSide(color: Colors.blue),
-                                ),
-                                prefixIcon: Icon(Icons.person)),
+
+
+                      }, decoration: InputDecoration(labelText: 'Username',
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(20) ),
+                              prefixIcon:Icon(Icons.person),)
+
+                            // decoration: InputDecoration(
+                            //     labelText: 'Username',
+                            //     enabledBorder: OutlineInputBorder(
+                            //       borderRadius: BorderRadius.circular(20),
+                            //       borderSide: BorderSide(color: Colors.black),
+                            //     ),
+                            //     focusedBorder: OutlineInputBorder(
+                            //       borderRadius: BorderRadius.circular(20),
+                            //       borderSide: BorderSide(color: Colors.blue),
+                            //     ),
+                            //     prefixIcon: Icon(Icons.person)),
                           ),
+
+
+
+
                           SizedBox(
                             height: 20,
                           ),
                           TextFormField(
-                              validator: ( value){
-                        if(value!.isEmpty)
-                        {
-                          return 'Please Enter Email';
-                        }
-                        if(!RegExp("^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+.[a-z]").hasMatch(value)){
-                          return 'Please a valid Email';
+                            
+                               validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return 'Please enter the email';
+                        } else if (!isValidEmail(value)) {
+                          return 'Please enter a valid email address';
                         }
                         return null;
                       },
-                      onSaved: ( value){
-                        email = value!;
-                      },
+                            controller: emailController,
+                            decoration: InputDecoration(labelText: 'email',
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(20) ),
+                              prefixIcon:Icon(Icons.email),)
+                            //  decoration: InputDecoration(
+                            //     labelText: 'Email',
+                            //     enabledBorder: OutlineInputBorder(
+                            //       borderRadius: BorderRadius.circular(20),
+                            //       borderSide: BorderSide(color: Colors.black),
+                            //     ),
+                            //     focusedBorder: OutlineInputBorder(
+                            //       borderRadius: BorderRadius.circular(20),
+                            //       borderSide: BorderSide(color: Colors.blue),
+                            //     ),
+                            //     prefixIcon: Icon(Icons.email)),
+                            
+                            
+                            
+                            
+
                            
                     
                         
-                            decoration: InputDecoration(
-                                labelText: 'Email',
-                                enabledBorder: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(20),
-                                  borderSide: BorderSide(color: Colors.black),
-                                ),
-                                focusedBorder: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(20),
-                                  borderSide: BorderSide(color: Colors.blue),
-                                ),
-                                prefixIcon: Icon(Icons.email)),
+                           
                           ),
                           SizedBox(
                             height: 20,
                           ),
                           TextFormField(
-                             validator: (value){
-                                if(value!.isEmpty){
-                                  return 'Please Enter Password'; 
-                                }
-                                return null;
-                              },
                             obscureText: true,
-                            decoration: InputDecoration(
-                                labelText: 'Password',
-                                enabledBorder: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(20),
-                                  borderSide: BorderSide(color: Colors.black),
-                                ),
-                                focusedBorder: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(20),
-                                  borderSide: BorderSide(color: Colors.blue),
-                                ),
-                                prefixIcon: Icon(Icons.lock)),
+                                          controller: password,
+                                           validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return 'Please enter the password';
+                        } else if (value.length < 8) {
+                          return 'Password should be at least 8 characters';
+                        }
+                        return null;
+                      }, decoration: InputDecoration(labelText: 'Password',
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(20) ),
+                              prefixIcon:Icon(Icons.lock),)
+                                          
+                            // decoration: InputDecoration(
+                            //     labelText: 'Password',
+                            //     enabledBorder: OutlineInputBorder(
+                            //       borderRadius: BorderRadius.circular(20),
+                            //       borderSide: BorderSide(color: Colors.black),
+                            //     ),
+                            //     focusedBorder: OutlineInputBorder(
+                            //       borderRadius: BorderRadius.circular(20),
+                            //       borderSide: BorderSide(color: Colors.blue),
+                            //     ),
+                            //     prefixIcon: Icon(Icons.lock)),
+
+                           
+                            
                           ),
                           //      ),
                           SizedBox(
@@ -155,35 +190,34 @@ class _SignUpState extends State<SignUp> {
                           ),
           
                           TextFormField(
-                            validator: (value){
-                              if(value!.isEmpty)
-                        {
-                          return 'Please enter password';
+                            controller: confirmpassword,
+                           validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return 'Please enter the confirm password';
+                        } else if (!passwordMatch)  {
+                          return 'password and confirm password mismatch';
                         }
-          
-                          // print(password.text);
-          
-                          // print(confirmpassword.text);
-          
-                        if(value!=password.text){
-                          return "Password does not vamatch";
-                        }
-          
+                       
                         return null;
                       },
+                      decoration: InputDecoration(labelText: 'Confirm Password',
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(20) ),
+                              prefixIcon:Icon(Icons.lock),),
           
                               obscureText: true,
-                              decoration: InputDecoration(
-                                  labelText: 'Confirm Password',
-                                  enabledBorder: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(20),
-                                    borderSide: BorderSide(color: Colors.black),
-                                  ),
-                                  focusedBorder: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(20),
-                                    borderSide: BorderSide(color: Colors.blue),
-                                  ),
-                                  prefixIcon: (Icon(Icons.lock))))
+                              // decoration: InputDecoration(
+                              //     labelText: 'Confirm Password',
+                              //     enabledBorder: OutlineInputBorder(
+                              //       borderRadius: BorderRadius.circular(20),
+                              //       borderSide: BorderSide(color: Colors.black),
+                              //     ),
+                              //     focusedBorder: OutlineInputBorder(
+                              //       borderRadius: BorderRadius.circular(20),
+                              //       borderSide: BorderSide(color: Colors.blue),
+                              //     ),
+                              //     prefixIcon: (Icon(Icons.lock)))
+                              )
                         ],
                       ),
                     ),
@@ -202,37 +236,38 @@ class _SignUpState extends State<SignUp> {
                         child: MaterialButton(
                           minWidth: double.infinity,
                           height: 60,
-                          onPressed: () {},
+                          onPressed: () { if (_formField.currentState!.validate()) {
+                    setState(() {
+                      passwordMatch = password.text ==
+                          confirmpassword.text;
+                    });
+                    if (passwordMatch) {
+                      // Continue with registration logic
+                      print('Registration successful');
+                      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => SignIn()));
+                    }
+                                      password.clear();
+                                      confirmpassword.clear();
+                                      
+          
+                          return;
+                        }else{
+                          print("UnSuccessfull");
+                        }},
                           color: Color(0xff0095FF),
                           elevation: 0,
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(50),
                           ),
-                          child: TextButton(
-                            onPressed: () {
-                                     
-                        if(_formField.currentState!.validate())
-                        {
-                         Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => SignIn()));
-                                      password.clear();
-                                      confirmpassword.clear();
-          
-                          return;
-                        }else{
-                          print("UnSuccessfull");
-                        }
-                            },
-                            child: Text(
-                              "Create",
+                          child: Text(
+                            "Create",
                               style: TextStyle(
                                 fontWeight: FontWeight.w600,
                                 fontSize: 18,
                                 color: Colors.white,
                               ),
-                            ),
+                            
+                  
                           ),
                         ),
           
@@ -252,7 +287,10 @@ class _SignUpState extends State<SignUp> {
                         Text("Already have an account?"),
                         TextButton(
                             onPressed: () {
-                       
+                        Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => SignIn()));
                              
                             },
                             child: Text(

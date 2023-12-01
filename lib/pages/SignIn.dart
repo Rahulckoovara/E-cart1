@@ -35,6 +35,7 @@ class _SignInState extends State<SignIn> {
           width: double.infinity,
           child: Form(
             key: _formField,
+            autovalidateMode: AutovalidateMode.onUserInteraction,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
@@ -67,33 +68,33 @@ class _SignInState extends State<SignIn> {
                             
                             keyboardType: TextInputType.emailAddress,
                            controller: emailController ,
-                            decoration: InputDecoration(
-                                labelText: 'Email',
-                                enabledBorder: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(20),
-                                  borderSide: BorderSide(color: Colors.black),
-                                ),
-                                focusedBorder: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(10),
-                                  borderSide: BorderSide(color: Colors.blue),
-                                ),
-                                prefixIcon: Icon(Icons.email)
+                            // decoration: InputDecoration(
+                            //     labelText: 'Email',
+                            //     enabledBorder: OutlineInputBorder(
+                            //       borderRadius: BorderRadius.circular(20),
+                            //       borderSide: BorderSide(color: Colors.black),
+                            //     ),
+                            //     focusedBorder: OutlineInputBorder(
+                            //       borderRadius: BorderRadius.circular(10),
+                            //       borderSide: BorderSide(color: Colors.blue),
+                            //     ),
+                            //     prefixIcon: Icon(Icons.email)
             
-                                // gapPadding: 10)
-                                //       floatingLabelBehavior: FloatingLabelBehavior.always,
-                                //                 contentPadding:
-                                //                     EdgeInsets.symmetric(horizontal: 45, vertical: 20),
-                                //                 enabledBorder: OutlineInputBorder(
-                                //                   borderRadius: BorderRadius.circular(20),
-                                //                   borderSide: BorderSide(color: Colors.black),
-                                //                   gapPadding: 10,
-                                //                 ),
-                                //                 focusedBorder: OutlineInputBorder(
-                                //                     borderRadius: BorderRadius.circular(20),
-                                //                     borderSide: BorderSide(color: Colors.b
-                                //                     gapPadding: 10),
-                                //                 suffixIcon: Icon(Icons.lock)),
-                                ),
+                            //     // gapPadding: 10)
+                            //     //       floatingLabelBehavior: FloatingLabelBehavior.always,
+                            //     //                 contentPadding:
+                            //     //                     EdgeInsets.symmetric(horizontal: 45, vertical: 20),
+                            //     //                 enabledBorder: OutlineInputBorder(
+                            //     //                   borderRadius: BorderRadius.circular(20),
+                            //     //                   borderSide: BorderSide(color: Colors.black),
+                            //     //                   gapPadding: 10,
+                            //     //                 ),
+                            //     //                 focusedBorder: OutlineInputBorder(
+                            //     //                     borderRadius: BorderRadius.circular(20),
+                            //     //                     borderSide: BorderSide(color: Colors.b
+                            //     //                     gapPadding: 10),
+                            //     //                 suffixIcon: Icon(Icons.lock)),
+                            //     ),
                               validator: ( value){
                       if(value!.isEmpty)
                       {
@@ -107,6 +108,10 @@ class _SignInState extends State<SignIn> {
                     onSaved: ( value){
                       email = value!;
                     },
+                    decoration: InputDecoration(labelText: 'Email',
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(20) ),
+                              prefixIcon:Icon(Icons.person),)
                   
                 
                               
@@ -119,24 +124,19 @@ class _SignInState extends State<SignIn> {
                             validator: (value){
                               if(value!.isEmpty){
                                 return 'Please Enter Password'; 
+                              }else if (value.length < 8) {
+                          return 'Password should be at least 8 characters';
                               }
                               return null;
                             },
                             
                             controller: passwordController,
                               obscureText: passwordToggle,
-                              decoration: InputDecoration(
-                                  labelText: 'Password',
-                                  enabledBorder: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(20),
-                                    borderSide: BorderSide(color: Colors.black),
-                                  ),
-                                  focusedBorder: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(20),
-                                    borderSide: BorderSide(color: Colors.blue),
-                                  ),
-                                  prefixIcon: Icon(Icons.lock),
-                                  suffix: InkWell(
+                               decoration: InputDecoration(labelText: 'Password',
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(20) ),
+                              prefixIcon:Icon(Icons.lock),
+                               suffix: InkWell(
                                     onTap: (){
                                       setState(() {
                                          passwordToggle=!passwordToggle;
@@ -145,9 +145,31 @@ class _SignInState extends State<SignIn> {
                                     },
                                     child: Icon(passwordToggle ? Icons.visibility: Icons.visibility_off_sharp),
                                     
-                                  )
-                                  //   : Icon(Icons.lock)
                                   ))
+                                  //   : Icon(Icons.lock))
+                              // decoration: InputDecoration(
+                              //     labelText: 'Password',
+                              //     enabledBorder: OutlineInputBorder(
+                              //       borderRadius: BorderRadius.circular(20),
+                              //       borderSide: BorderSide(color: Colors.black),
+                              //     ),
+                              //     focusedBorder: OutlineInputBorder(
+                              //       borderRadius: BorderRadius.circular(20),
+                              //       borderSide: BorderSide(color: Colors.blue),
+                              //     ),
+                              //     prefixIcon: Icon(Icons.lock),
+                                  // suffix: InkWell(
+                                  //   onTap: (){
+                                  //     setState(() {
+                                  //        passwordToggle=!passwordToggle;
+                                  //     });
+                                     
+                                  //   },
+                                  //   child: Icon(passwordToggle ? Icons.visibility: Icons.visibility_off_sharp),
+                                    
+                                  // )
+                                  // //   : Icon(Icons.lock))
+                                 )
                         ],
                       ),
                     ),
@@ -170,15 +192,8 @@ class _SignInState extends State<SignIn> {
                             child: MaterialButton(
                               minWidth: double.infinity,
                               height: 60,
-                              onPressed: () {},
-                              color: Color(0xff0095FF),
-                              elevation: 0,
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(50),
-                              ),
-                              child: TextButton(
-                                onPressed: () {
-                                  if(_formField.currentState!.validate()){
+                              onPressed: () {
+                                   if(_formField.currentState!.validate()){
                                  
                                    Navigator.push(
                                       context,
@@ -194,16 +209,19 @@ class _SignInState extends State<SignIn> {
                                   }
                                 
                               
-                              
-                                },
-                                child: Text(
-                                  "Login",
+                              },
+                              color: Color(0xff0095FF),
+                              elevation: 0,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(50),
+                              ),
+                              child: Text("Login",
                                   style: TextStyle(
                                     fontWeight: FontWeight.w600,
                                     fontSize: 18,
                                     color: Colors.white,
                                   ),
-                                ),
+                               
                               ),
                             ),
                           )
