@@ -1,7 +1,6 @@
-import 'package:e_cart1/widgets/cart_item.dart';
-import 'package:flutter/material.dart';
 //import '../model/Product.dart';
 import 'package:e_cart1/model/my_product.dart';
+import 'package:flutter/material.dart';
 
 class Cart extends StatelessWidget {
   //final Product product;
@@ -28,15 +27,7 @@ class Cart extends StatelessWidget {
           ...List.generate(cartItems.length, (index) {
             return Dismissible(
               key: UniqueKey(),
-              direction: DismissDirection.endToStart,
-              background: Container(
-                decoration: BoxDecoration(
-                    color: Colors.red, borderRadius: BorderRadius.circular(10)),
-                child: Icon(
-                  Icons.delete,
-                  color: Colors.white,
-                ),
-              ),
+              
               child: SizedBox(
                   height: 125,
                   child: Card(

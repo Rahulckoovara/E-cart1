@@ -54,6 +54,8 @@ class _HomeScreenState extends State<HomeScreen> {
                       ? _builsJackets()
                       : _buildShoes())
         ],
+
+        
       ),
     );
   }

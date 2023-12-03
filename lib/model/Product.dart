@@ -14,5 +14,6 @@ class Product {
       required this.price,
       required this.image,
       required this.category,
-      required this.quantity});
+       this.quantity=1,
+      });
 }

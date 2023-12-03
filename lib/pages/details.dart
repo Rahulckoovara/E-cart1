@@ -1,7 +1,10 @@
 import 'package:e_cart1/model/Product.dart';
 import 'package:e_cart1/pages/availablesize.dart';
-import 'package:e_cart1/pages/cart.dart';
+import 'package:e_cart1/pages/cart1.dart';
+import 'package:e_cart1/providers/cart_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
 // import '../providers/cart_provider.dart';
 
 class Details extends StatefulWidget {
@@ -178,6 +181,8 @@ class _DetailsState extends State<Details> {
 //--##############################--bottom bar--################################
 
 
+
+
   bottomSheet: Container(
     padding: EdgeInsets.symmetric(horizontal: 10),
     alignment: Alignment.center,
@@ -201,9 +206,11 @@ class _DetailsState extends State<Details> {
         ),
         ElevatedButton.icon(
             onPressed: () {
+              final cartProvider = Provider.of<CartProvider>(context, listen: false);
+    cartProvider.addToCart(widget.product);
               Navigator.push(context,
                   MaterialPageRoute(builder: (context) {
-                return Cart();
+                return Cart1();
               }));
               //   provider.toggleProduct(product);
             },

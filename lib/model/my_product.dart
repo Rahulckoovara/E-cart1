@@ -13,7 +13,7 @@ class MyProducts {
       quantity: 1,
     ),
     Product(
-      id: 1,
+      id: 2,
       name: 'Red Tape Elevate your ',
       description: 'Red Tape for men running experience with our ComfortStride Running Shoes. Designed for optimum performance and comfort, these shoes are a perfect blend of style and functionality.',
       price: 600,
@@ -22,7 +22,7 @@ class MyProducts {
       quantity: 1,
     ),
     Product(
-      id: 1,
+      id: 3,
       name: 'Nike mark111',
       description: 'Clean nike mark 111 shoes extra comfort Elevate your running experience with our ComfortStride Running Shoes. Designed for optimum performance and comfort, these shoes are a perfect blend of style and functionality.',
       price: 1000,
@@ -31,7 +31,7 @@ class MyProducts {
       quantity: 1,
     ),
     Product(
-      id: 1,
+      id: 4,
       name: 'adidas',
       description: 'Black adidas original with smoothness Elevate your running experience with our ComfortStride Running Shoes. Designed for optimum performance and comfort, these shoes are a perfect blend of style and functionality.',
       price: 1100,
@@ -40,7 +40,7 @@ class MyProducts {
       quantity: 1,
     ),
     Product(
-      id: 1,
+      id: 5,
       name: 'adidas running shoes',
       description: 'Shoes for fast run and comfort Elevate your running experience with our ComfortStride Running Shoes. Designed for optimum performance and comfort, these shoes are a perfect blend of style and functionality.',
       price: 2000,
@@ -49,9 +49,10 @@ class MyProducts {
       quantity: 1,
     ),
 
+
     // jacks--------------------
     Product(
-      id: 1,
+      id: 6,
       name: 'Nike jackets 200',
       description: 'blacket comfort jackets in winters Elevate your running experience with our ComfortStride Running Shoes. Designed for optimum performance and comfort, these shoes are a perfect blend of style and functionality.',
       price: 1800,
@@ -60,7 +61,7 @@ class MyProducts {
       quantity: 1,
     ),
     Product(
-      id: 1,
+      id: 7,
       name: 'Perfomax jackets',
       description: 'blacket comfort jackets in winters Elevate your running experience with our ComfortStride Running Shoes. Designed for optimum performance and comfort, these shoes are a perfect blend of style and functionality.',
       price: 1500,
@@ -69,7 +70,7 @@ class MyProducts {
       quantity: 1,
     ),
     Product(
-      id: 1,
+      id: 8,
       name: 'Nike dual color',
       description: 'blacket comfort jackets in winters Elevate your running experience with our ComfortStride Running Shoes. Designed for optimum performance and comfort, these shoes are a perfect blend of style and functionality.',
       price: 2200,
@@ -78,7 +79,7 @@ class MyProducts {
       quantity: 1,
     ),
     Product(
-      id: 1,
+      id: 9,
       name: 'Red tape jackets',
       description: 'blacket comfort jackets in winters Elevate your running experience with our ComfortStride Running Shoes. Designed for optimum performance and comfort, these shoes are a perfect blend of style and functionality.',
       price: 3000,
@@ -87,7 +88,7 @@ class MyProducts {
       quantity: 1,
     ),
     Product(
-      id: 1,
+      id: 10,
       name: 'jordan',
       description: 'blacket comfort jackets in winters Elevate your running experience with our ComfortStride Running Shoes. Designed for optimum performance and comfort, these shoes are a perfect blend of style and functionality.',
       price: 3300,
@@ -99,7 +100,7 @@ class MyProducts {
 
   static List<Product> Jackets = [
     Product(
-      id: 1,
+      id: 6,
       name: 'Nike jackets 200',
       description: 'blacket comfort jackets in winters Elevate your running experience with our ComfortStride Running Shoes. Designed for optimum performance and comfort, these shoes are a perfect blend of style and functionality.',
       price: 1800,
@@ -108,7 +109,7 @@ class MyProducts {
       quantity: 1,
     ),
     Product(
-      id: 1,
+      id: 7,
       name: 'Perfomax jackets',
       description: 'blacket comfort jackets in winters Elevate your running experience with our ComfortStride Running Shoes. Designed for optimum performance and comfort, these shoes are a perfect blend of style and functionality.',
       price: 1500,
@@ -117,7 +118,7 @@ class MyProducts {
       quantity: 1,
     ),
     Product(
-      id: 1,
+      id: 8,
       name: 'Nike dual color',
       description: 'blacket comfort jackets in winters Elevate your running experience with our ComfortStride Running Shoes. Designed for optimum performance and comfort, these shoes are a perfect blend of style and functionality.',
       price: 2200,
@@ -126,7 +127,7 @@ class MyProducts {
       quantity: 1,
     ),
     Product(
-      id: 1,
+      id: 9,
       name: 'Red tape jackets',
       description: 'blacket comfort jackets in winters Elevate your running experience with our ComfortStride Running Shoes. Designed for optimum performance and comfort, these shoes are a perfect blend of style and functionality.',
       price: 3000,
@@ -135,7 +136,7 @@ class MyProducts {
       quantity: 1,
     ),
     Product(
-      id: 1,
+      id: 10,
       name: 'jordan',
       description: 'blacket comfort jackets in winters Elevate your running experience with our ComfortStride Running Shoes. Designed for optimum performance and comfort, these shoes are a perfect blend of style and functionality.',
       price: 3300,
@@ -156,7 +157,7 @@ class MyProducts {
       quantity: 1,
     ),
     Product(
-      id: 1,
+      id: 2,
       name: 'Red Tape',
       description: 'Red Tape for men Elevate your running experience with our ComfortStride Running Shoes. Designed for optimum performance and comfort, these shoes are a perfect blend of style and functionality.',
       price: 600,
@@ -165,7 +166,7 @@ class MyProducts {
       quantity: 1,
     ),
     Product(
-      id: 1,
+      id: 3,
       name: 'Nike mark111',
       description: 'Clean nike mark 111 shoes extra comfort Elevate your running experience with our ComfortStride Running Shoes. Designed for optimum performance and comfort, these shoes are a perfect blend of style and functionality.',
       price: 1000,
@@ -174,7 +175,7 @@ class MyProducts {
       quantity: 1,
     ),
     Product(
-      id: 1,
+      id: 4,
       name: 'adidas',
       description: 'Black adidas original with smoothness Elevate your running experience with our ComfortStride Running Shoes. Designed for optimum performance and comfort, these shoes are a perfect blend of style and functionality.',
       price: 1100,
@@ -183,7 +184,7 @@ class MyProducts {
       quantity: 1,
     ),
     Product(
-      id: 1,
+      id: 5,
       name: 'adidas running shoes',
       description: 'Shoes for fast run and comfort Elevate your running experience with our ComfortStride Running Shoes. Designed for optimum performance and comfort, these shoes are a perfect blend of style and functionality.',
       price: 2000,
