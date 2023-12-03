@@ -8,6 +8,8 @@ class Cart extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+    
     final cartItems = MyProducts.allProducts.take(5).toList();
 
     return Scaffold(

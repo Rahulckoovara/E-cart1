@@ -18,7 +18,9 @@ class Cart1 extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('Cart'),
+        title: Text('Cart',
+        style: TextStyle(color: Colors.white),),
+        centerTitle: true,
         backgroundColor: Colors.blue,
       ),
       body: ListView.builder(
@@ -42,7 +44,9 @@ class Cart1 extends StatelessWidget {
               ),
             child: Card(
               child: ListTile(
-                leading: Image.asset(product.image),
+                leading: Container(
+                  width: 80,
+                  child: Image.asset(product.image)),
                 title: Text(cartItems[index].name),
                subtitle: 
                Column(
@@ -56,37 +60,79 @@ class Cart1 extends StatelessWidget {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-              Text('Total: \₹${(cartItems[index].price * cartItems[index].quantity).toString()}',
-                style: TextStyle(fontWeight: FontWeight.bold),
-              ),
-              // Text('Total: \₹${(cartItems[index].price * cartItems[index].quantity).toString()}',
-              //   style: TextStyle(fontWeight: FontWeight.bold),
-              // ),
-              
-              
-              
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  IconButton(
-                    onPressed: () {
-                      // Call a function to decrement the quantity in the cart
-                      cartProvider.decrementQuantity(cartItem.id);
-                    },
-                    icon: Icon(Icons.remove),
-                  ),
-                  Text(' ${cartItems[index].quantity.toString()} '),
-                  IconButton(
-                    onPressed: () {
-                      // Call a function to increment the quantity in the cart
-                      cartProvider.incrementQuantity(cartItem.id);
-                    },
-                    icon: Icon(Icons.add),
-                  ),
-                ],
-              ),
+                        Row(
+                          children: [
+                            Text('Total: \₹${(cartItems[index].price * cartItems[index].quantity).toString()}',
+                            style: TextStyle(fontWeight: FontWeight.bold),
+                            
+                            
+                                          ),
+                                          
+                          ],
+                        ),
+                          Row(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: [
+                            Container(
+                              height: 30,
+                              width: 30,
+                              decoration: BoxDecoration(
+                                color: Colors.blue[300], // Set your desired color
+                                borderRadius: BorderRadius.circular(8.0), // Optional: Add rounded corners
+                              ),
+                              child: IconButton(
+                                onPressed: () {
+                                  // Call a function to decrement the quantity in the cart
+                                  cartProvider.decrementQuantity(cartItem.id);
+                                },
+                                icon: Icon(Icons.remove,size: 13,),
+                                color: Colors.white, // Optional: Set the icon color
+                              ),
+                            ),
+                            SizedBox(width: 8.0), // Add some space between the icons and text
+                            Container(
+                              
+                              color: Colors.grey[200],
+                              // decoration: BoxDecoration(
+                              //   border: Border.all()
+                              // ),
+
+
+                              child: Text(
+                                ' ${cartItems[index].quantity.toString()} ',
+                                style: TextStyle(fontSize: 13.0), // Optional: Adjust the font size
+                              ),
+                            ),
+                            SizedBox(width: 8.0), // Add some space between the text and icons
+                            Container(
+                                height: 30,
+                              width: 30,
+                              decoration: BoxDecoration(
+                                color: Colors.blue[300], // Set your desired color
+                                borderRadius: BorderRadius.circular(8.0), // Optional: Add rounded corners
+                              ),
+                              child: IconButton(
+                                onPressed: () {
+                                  // Call a function to increment the quantity in the cart
+                                  cartProvider.incrementQuantity(cartItem.id);
+                                },
+                                icon: Icon(Icons.add,size: 13,),
+                                color: Colors.white, // Optional: Set the icon color
+                              ),
+                            ),
+                          ],
+                        ),
                       ],
                     ),
+                    
+
+                    TextButton.icon(onPressed: (){}, 
+                     label: Text('Remove',style: TextStyle(color: Colors.black,
+                     fontWeight: FontWeight.w400),
+                     ),
+                    icon: Icon(Icons.delete,color: Colors.black,), 
+                                       )
+                  
               
               
               

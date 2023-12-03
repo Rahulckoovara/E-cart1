@@ -207,7 +207,7 @@ class _DetailsState extends State<Details> {
         ElevatedButton.icon(
             onPressed: () {
               final cartProvider = Provider.of<CartProvider>(context, listen: false);
-    cartProvider.addToCart(widget.product);
+              cartProvider.addToCart(widget.product);
               Navigator.push(context,
                   MaterialPageRoute(builder: (context) {
                 return Cart1();

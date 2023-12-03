@@ -9,10 +9,23 @@ class CartProvider extends ChangeNotifier {
   List<Product> get cartItems => _cartItems;
 
   void addToCart(Product product) {
+    bool alreadyInCart = _cartItems.any((item) => item.id == product.id);
     
-    _cartItems.add(product);
-    notifyListeners();
+
+    if(!alreadyInCart){
+      _cartItems.add(product);
+      notifyListeners();
+    
   }
+     else{
+    notifyListeners();
+//Navigator.push(context, MaterialPageRoute(builder: (context)))
+
+ //   Navigator.pushReplacement(context, '/cart1');
+     }
+  }
+
+
   void incrementQuantity(int productId) {
 
   // Find the cart item by product id and increment the quantity
@@ -41,35 +54,4 @@ void decrementQuantity(int productId) {
 
 
 
-
-
-// class CartProvider extends ChangeNotifier {
-//   final List<Product> _cart = [];
-//   List<Product> get cart => _cart;
-
-// //  CartProvider({
-// //     Key? key,
-// //     required Widget child,
-// //   }) : super(key: key, child: child);
-
-// //   static CartProvider of(BuildContext context) {
-// //     return context.dependOnInheritedWidgetOfExactType<CartProvider>()!;
-// //   }
-
-//   void toggleProduct(Product product) {
-//     if (_cart.contains(product)) {
-//       for (Product element in _cart) {
-//         element.quantity++;
-//       }
-//     } else {
-//       _cart.add(product);
-//     }
-//     notifyListeners();
-//   }
-
-//   static of(BuildContext context) {}
-//   //  @override
-//   // bool updateShouldNotify(covariant InheritedWidget oldWidget) {
-//   //   return true;
-//   //}
 
