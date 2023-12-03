@@ -1,5 +1,6 @@
 import 'package:e_cart1/model/Product.dart';
 import 'package:e_cart1/model/my_product.dart';
+import 'package:e_cart1/pages/placeorder.dart';
 import 'package:e_cart1/providers/cart_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -126,12 +127,14 @@ class Cart1 extends StatelessWidget {
                     ),
                     
 
-                    TextButton.icon(onPressed: (){}, 
-                     label: Text('Remove',style: TextStyle(color: Colors.black,
-                     fontWeight: FontWeight.w400),
-                     ),
-                    icon: Icon(Icons.delete,color: Colors.black,), 
-                                       )
+                    // TextButton.icon(onPressed: (){
+                    //  //cartProvider.cartItems.remove(cartItem);
+                    // }, 
+                    //  label: Text('Remove',style: TextStyle(color: Colors.black,
+                    //  fontWeight: FontWeight.w400),
+                    //  ),
+                    // icon: Icon(Icons.delete,color: Colors.black,), 
+                    //  )
                   
               
               
@@ -172,7 +175,10 @@ class Cart1 extends StatelessWidget {
               //
              
               ElevatedButton.icon(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context){
+                    return PlaceOrderPage();
+                  }));                },
                 icon: Icon(Icons.check_outlined),
                 label: Text('Place order'),
               ),

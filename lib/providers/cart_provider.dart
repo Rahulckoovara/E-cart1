@@ -48,7 +48,12 @@ void decrementQuantity(int productId) {
   // Notify listeners to update the UI
   notifyListeners();
 }
+Future<void> removeCartItem(String itemId) async {
+    _cartItems.removeWhere((cartItem) => cartItem.id == itemId);
+    notifyListeners();
+  }
 
+  getTotalAmount() {}
 
 }
 

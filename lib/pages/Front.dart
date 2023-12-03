@@ -3,6 +3,7 @@ import 'package:e_cart1/model/my_product.dart';
 import 'package:e_cart1/pages/HomeScreen.dart';
 import 'package:e_cart1/pages/ProfileScreen.dart';
 import 'package:e_cart1/pages/cart1.dart';
+//import 'package:e_cart1/pages/cart2.dart';
 import 'package:e_cart1/pages/favorite.dart';
 import 'package:flutter/material.dart';
 

@@ -34,8 +34,9 @@ class _DetailsState extends State<Details> {
 
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.blue,
-        title: Text('Details'),
+        backgroundColor: Colors.blue, 
+        title: Text('Details',
+         style: TextStyle(color: Colors.white)),
         centerTitle: true,
       ),
       body: SingleChildScrollView(
