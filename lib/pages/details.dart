@@ -20,11 +20,12 @@ class _DetailsState extends State<Details> {
 
    late String selectedSize;
    
+   
 
   @override
   void initState() {
     super.initState();
-    selectedSize = ' '; // Set an initial size, or you can leave it empty if you want no initial selection.
+    selectedSize = ''; // Set an initial size, or you can leave it empty if you want no initial selection.
   }
   @override
   Widget build(BuildContext context) {

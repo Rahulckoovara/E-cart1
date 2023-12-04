@@ -40,7 +40,10 @@ void decrementQuantity(int productId) {
   // Find the cart item by product id and increment the quantity
   final cartItem = _cartItems.firstWhere((item) => item.id == productId);
   cartItem.quantity--;
-   if (cartItem.quantity == 0) {
+
+
+   if (cartItem.quantity == 0) 
+   {
     _cartItems.remove(cartItem);
   }
   
@@ -48,7 +51,8 @@ void decrementQuantity(int productId) {
   // Notify listeners to update the UI
   notifyListeners();
 }
-Future<void> removeCartItem(String itemId) async {
+Future<void> removeCartItem(String itemId) async 
+  {
     _cartItems.removeWhere((cartItem) => cartItem.id == itemId);
     notifyListeners();
   }

@@ -9,6 +9,7 @@ class HomeScreen extends StatefulWidget {
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
+  
 }
 
 class _HomeScreenState extends State<HomeScreen> {
@@ -19,6 +20,7 @@ class _HomeScreenState extends State<HomeScreen> {
       padding: const EdgeInsets.symmetric(vertical: 1.0),
       child: Column(
         children: [
+
           CarouselSlider(
               items: [
                 Image.asset('assets/ad/ad1.png'),
@@ -28,7 +30,8 @@ class _HomeScreenState extends State<HomeScreen> {
                 autoPlay: true,
                 height: 200,
                 viewportFraction: 1,
-              )),
+              )
+              ),
           // const Text(
           //   'Products',
           //   style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
