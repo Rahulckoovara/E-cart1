@@ -29,7 +29,7 @@ class PlaceOrderPage extends StatelessWidget {
     context: context,
     builder: (BuildContext context) {
       return AlertDialog(
-        title: Text('Order Confirmed'),
+        title: Text('Order Confirmed !',style: TextStyle(color: Colors.green),),
         content: Text('Your order has been confirmed successfully.'),
         actions: <Widget>[
           TextButton(
@@ -223,6 +223,7 @@ class PlaceOrderPage extends StatelessWidget {
               onPressed: () {
 
                 generatePDF();
+                cartProvider.clearCart(context);
                 _showConfirmationDialog(context);
                 
                 // Perform the logic for placing the order

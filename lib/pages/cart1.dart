@@ -1,5 +1,6 @@
 import 'package:e_cart1/model/Product.dart';
 import 'package:e_cart1/model/my_product.dart';
+import 'package:e_cart1/pages/HomeScreen.dart';
 import 'package:e_cart1/pages/placeorder.dart';
 import 'package:e_cart1/providers/cart_provider.dart';
 import 'package:flutter/material.dart';
@@ -24,131 +25,158 @@ class Cart1 extends StatelessWidget {
         centerTitle: true,
         backgroundColor: Colors.blue,
       ),
-      body: ListView.builder(
-        itemCount: cartItems.length,
-        itemBuilder: (context, index) {
-          final cartItem = cartItems[index];
-           final Product product = MyProducts.allProducts
-              .firstWhere((product) => product.id == cartItem.id );
-
-
-          return Dismissible(
-            key: UniqueKey(),
-            direction: DismissDirection.endToStart,
-              background: Container(
-                decoration: BoxDecoration(
-                    color: Colors.red, borderRadius: BorderRadius.circular(10)),
-                child: Icon(
-                  Icons.delete,
-                  color: Colors.white,
+      body: Center(
+        child: cartItems.isEmpty?
+        Column(
+         
+          children:[
+            SizedBox(height: 20),
+            Container(
+              color: Colors.transparent,
+              height: 200,
+              width: 200,
+              child: Image.asset('assets/ad/cart_gif.gif')),
+          Text('Your cart is empty 😞',
+          style: TextStyle(fontSize: 15),),
+          TextButton(onPressed: (){
+            Navigator.push(context, MaterialPageRoute(builder: (context){
+              return HomeScreen();
+            }));
+          }, 
+          child: Text('Pick up where You left off...',style: TextStyle(fontSize: 18),))
+          ] 
+        )
+        
+        : //or dispaly listview--------------------------------------------     
+        
+        ListView.builder(
+          itemCount: cartItems.length,
+          itemBuilder: (context, index) {
+            final cartItem = cartItems[index];
+             final Product product = MyProducts.allProducts
+                .firstWhere((product) => product.id == cartItem.id );
+        
+        
+            return Dismissible(
+              key: UniqueKey(),
+              direction: DismissDirection.endToStart,
+                background: Container(
+                  decoration: BoxDecoration(
+                      color: Colors.red, borderRadius: BorderRadius.circular(10)),
+                  child: Icon(
+                    Icons.delete,
+                    color: Colors.white,
+                  ),
                 ),
-              ),
-            child: Card(
-              child: ListTile(
-                leading: Container(
-                  width: 80,
-                  child: Image.asset(product.image)),
-                title: Text(cartItems[index].name),
-               subtitle: 
-               Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text('Price: \₹${cartItems[index].price.toString()}',
-                      style: TextStyle(color: Colors.green),
-                    ),
-                    Text('Quantity: ${cartItems[index].quantity.toString()}'),
-                    
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Row(
-                          children: [
-                            Text('Total: \₹${(cartItems[index].price * cartItems[index].quantity).toString()}',
-                            style: TextStyle(fontWeight: FontWeight.bold),
-                            
-                            
-                                          ),
-                                          
-                          ],
-                        ),
+              child: Card(
+                child: ListTile(
+                  leading: Container(
+                    width: 80,
+                    child: Image.asset(product.image)),
+                  title: Text(cartItems[index].name),
+                 subtitle: 
+
+                 Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+
+                    children: [
+                      Text('Price: \₹${cartItems[index].price.toString()}',
+                        style: TextStyle(color: Colors.green),
+                      ),
+                      Text('Quantity: ${cartItems[index].quantity.toString()}'),
+                      
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
                           Row(
-                          mainAxisAlignment: MainAxisAlignment.end,
-                          children: [
-                            Container(
-                              height: 30,
-                              width: 30,
-                              decoration: BoxDecoration(
-                                color: Colors.blue[300], // Set your desired color
-                                borderRadius: BorderRadius.circular(8.0), // Optional: Add rounded corners
-                              ),
-                              child: IconButton(
-                                onPressed: () {
-                                  // Call a function to decrement the quantity in the cart
-                                  cartProvider.decrementQuantity(cartItem.id);
-                                },
-                                icon: Icon(Icons.remove,size: 13,),
-                                color: Colors.white, // Optional: Set the icon color
-                              ),
-                            ),
-                            SizedBox(width: 8.0), // Add some space between the icons and text
-                            Container(
+                            children: [
+                              Text('Total: \₹${(cartItems[index].price * cartItems[index].quantity).toString()}',
+                              style: TextStyle(fontWeight: FontWeight.bold),
                               
-                              color: Colors.grey[200],
-                              // decoration: BoxDecoration(
-                              //   border: Border.all()
-                              // ),
-
-
-                              child: Text(
-                                ' ${cartItems[index].quantity.toString()} ',
-                                style: TextStyle(fontSize: 13.0), // Optional: Adjust the font size
-                              ),
-                            ),
-                            SizedBox(width: 8.0), // Add some space between the text and icons
-                            Container(
+                              
+                                            ),
+                                            
+                            ],
+                          ),
+                            Row(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: [
+                              Container(
                                 height: 30,
-                              width: 30,
-                              decoration: BoxDecoration(
-                                color: Colors.blue[300], // Set your desired color
-                                borderRadius: BorderRadius.circular(8.0), // Optional: Add rounded corners
+                                width: 30,
+                                decoration: BoxDecoration(
+                                  color: Colors.blue[300], // Set your desired color
+                                  borderRadius: BorderRadius.circular(8.0), // Optional: Add rounded corners
+                                ),
+                                child: IconButton(
+                                  onPressed: () {
+                                    // Call a function to decrement the quantity in the cart
+                                    cartProvider.decrementQuantity(cartItem.id);
+                                  },
+                                  icon: Icon(Icons.remove,size: 13,),
+                                  color: Colors.white, // Optional: Set the icon color
+                                ),
                               ),
-                              child: IconButton(
-                                onPressed: () {
-                                  // Call a function to increment the quantity in the cart
-                                  cartProvider.incrementQuantity(cartItem.id);
-                                },
-                                icon: Icon(Icons.add,size: 13,),
-                                color: Colors.white, // Optional: Set the icon color
+                              SizedBox(width: 8.0), // Add some space between the icons and text
+                              Container(
+                                
+                                color: Colors.grey[200],
+                                // decoration: BoxDecoration(
+                                //   border: Border.all()
+                                // ),
+        
+        
+                                child: Text(
+                                  ' ${cartItems[index].quantity.toString()} ',
+                                  style: TextStyle(fontSize: 13.0), // Optional: Adjust the font size
+                                ),
                               ),
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
+                              SizedBox(width: 8.0), // Add some space between the text and icons
+                              Container(
+                                  height: 30,
+                                width: 30,
+                                decoration: BoxDecoration(
+                                  color: Colors.blue[300], // Set your desired color
+                                  borderRadius: BorderRadius.circular(8.0), // Optional: Add rounded corners
+                                ),
+                                child: IconButton(
+                                  onPressed: () {
+                                    // Call a function to increment the quantity in the cart
+                                    cartProvider.incrementQuantity(cartItem.id);
+                                  },
+                                  icon: Icon(Icons.add,size: 13,),
+                                  color: Colors.white, // Optional: Set the icon color
+                                ),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                      
+        
+                      TextButton.icon(onPressed: (){
+                       cartProvider.clearCart(context);
+                      }, 
+                       label: Text('Remove',style: TextStyle(color: Colors.black,
+                       fontWeight: FontWeight.w400),
+                       ),
+                      icon: Icon(Icons.delete,color: Colors.black,), 
+                       )
                     
-
-                    // TextButton.icon(onPressed: (){
-                    //  //cartProvider.cartItems.remove(cartItem);
-                    // }, 
-                    //  label: Text('Remove',style: TextStyle(color: Colors.black,
-                    //  fontWeight: FontWeight.w400),
-                    //  ),
-                    // icon: Icon(Icons.delete,color: Colors.black,), 
-                    //  )
-                  
-              
-              
-              
-                  ],
+                
+                
+                
+                    ],
+                  ),
+                  // Add more details or customize as needed
                 ),
-                // Add more details or customize as needed
               ),
-            ),
-          );
-  
+            );
           
-          
-        },
+            
+            
+          },
+        ),
       ),
 
 
