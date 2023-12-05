@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:e_cart1/pages/cart1.dart';
 import 'package:e_cart1/providers/cart_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:path_provider/path_provider.dart';
@@ -18,6 +19,35 @@ class PlaceOrderPage extends StatelessWidget {
       totalAmount += cartItem.price * cartItem.quantity;
     }
 
+//----------popup---------------------------
+//###########################################
+
+
+
+    Future<void> _showConfirmationDialog(BuildContext context) async {
+  return showDialog<void>(
+    context: context,
+    builder: (BuildContext context) {
+      return AlertDialog(
+        title: Text('Order Confirmed'),
+        content: Text('Your order has been confirmed successfully.'),
+        actions: <Widget>[
+          TextButton(
+            child: Text('OK'),
+            onPressed: () {
+              Navigator.of(context).pop();
+               Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(builder: (context) => Cart1()),
+              );
+            },
+          ),
+        ],
+      );
+    },
+  );
+}
+
     Future<void> generatePDF() async {
       final pdfLib.Document pdf = pdfLib.Document();
 
@@ -26,15 +56,17 @@ class PlaceOrderPage extends StatelessWidget {
           pageFormat: PdfPageFormat.a4,
           build: (context) => [
             pdfLib.Header(level: 1, text: 'Order Summary'),
+            
             for (var cartItem in cartItems)
               pdfLib.Container(
                 margin: pdfLib.EdgeInsets.all(10),
                 child: pdfLib.Column(
                   crossAxisAlignment: pdfLib.CrossAxisAlignment.start,
                   children: [
-                    pdfLib.Text('Product: ${cartItem.name}'),
-                    pdfLib.Text('Quantity: ${cartItem.quantity}'),
-                    pdfLib.Text('Total: ₹${cartItem.price * cartItem.quantity}'),
+                    
+                   pdfLib.Text('Product:${cartItem.name}'),
+                   pdfLib.Text('Quantity:${cartItem.quantity}'),
+                   pdfLib.Text('Total: ₹${cartItem.price * cartItem.quantity}'),
                   ],
                 ),
               ),
@@ -78,47 +110,34 @@ class PlaceOrderPage extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Column(
-                    children: [
-                      CircleAvatar(
-                        backgroundColor: Colors.blue[100],
-                        radius: 20,
-                        child: Icon(Icons.done),
-                      ),
-                      Text('Details')
-                    ],
+                  CircleAvatar(
+                    backgroundColor: Colors.blue[100],
+                    radius: 20,
+                    child: Icon(Icons.done),
                   ),
+                //  Text('Details'),
                   Container(
                     height: 1,
-                    width: 70,
+                    width: 80,
                     color: Colors.black,
                   ),
-                   Column(
-                     children: [
-                       CircleAvatar(
-                         backgroundColor: Colors.blue[100],
-                        radius: 20,
-                        child:Text('2'),
-                                         ),
-                                          Text('Order Summary')
-
-                     ],
-                   ),
+                   CircleAvatar(
+                     backgroundColor: Colors.blue[500],
+                    radius: 20,
+                    child:Text('2'),
+                                     ),
+                  //  Text('Order Summary'),
                   Container(
                     height: 1,
-                    width: 70,
+                    width: 80,
                     color: Colors.black,
                   ),
-                   Column(
-                     children: [
-                       CircleAvatar(
-                         backgroundColor: Colors.blue[100],
-                        radius: 20,
-                       child: Text('3'),
-                                         ),
-                                          Text('Payment')
-                     ],
-                   ),
+                   CircleAvatar(
+                     backgroundColor: Colors.blue[100],
+                    radius: 20,
+                   child: Text('3',),
+                                     ),
+                                      //Text('Payment'),
                   // Container(
                   //   // Customize the container properties as needed
                   //   height: 50,
@@ -133,27 +152,55 @@ class PlaceOrderPage extends StatelessWidget {
                   // ),
                 ],
               ),
-              SizedBox(height: 16),
-              Text(
-                'Order Summary:',
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+              Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              
+
+                children: [
+                      Text("Details"),
+                      Text("Order Summary"),
+                      Text("Payment"),
+                      
+                ],
+              ),
+              SizedBox(height: 30),
+              Row(
+                children: [
+                  Text(
+                    'Order Summary:',
+                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                  ),
+                ],
               ),
               SizedBox(height: 16),
+             
               Expanded(
-                child: ListView.builder(
-                  itemCount: cartItems.length,
-                  itemBuilder: (context, index) {
-                    final cartItem = cartItems[index];
-                    // Assuming you have a Product model with a 'name' property
-                    return ListTile(
-                      title: Text(cartItem.name),
-                      subtitle: Text('Quantity: ${cartItem.quantity}'),
-                      trailing: Text(
-                        '\₹${cartItem.price * cartItem.quantity}',
-                        style: TextStyle(color: Colors.green),
-                      ),
-                    );
-                  },
+                child: Container(
+                  decoration: BoxDecoration(
+                    border: Border.all(
+                      color: Colors.black,
+                      
+                      
+                    )
+                  ),
+                  
+                  child: ListView.builder(
+                    
+                    itemCount: cartItems.length,
+                    itemBuilder: (context, index) {
+                      final cartItem = cartItems[index];
+                      // Assuming you have a Product model with a 'name' property
+                      return ListTile(
+                        title: Text(cartItem.name),
+                        subtitle: Text('Quantity: ${cartItem.quantity}'),
+                        trailing: Text(
+                          '\₹${cartItem.price * cartItem.quantity}',
+                          style: TextStyle(color: Colors.red,
+                          fontSize: 17),
+                          
+                        ),
+                      );
+                    },
+                  ),
                 ),
               ),
             ],
@@ -174,7 +221,10 @@ class PlaceOrderPage extends StatelessWidget {
             ),
             ElevatedButton(
               onPressed: () {
+
                 generatePDF();
+                _showConfirmationDialog(context);
+                
                 // Perform the logic for placing the order
                 // For example, clear the cart or make an API call
                 // cartProvider.clearCart(); // assuming you have a method to clear the cart
